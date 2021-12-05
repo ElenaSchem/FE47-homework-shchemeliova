@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shch_6-1</title>
+
+    <style>
+        div {
+            width: 250px;
+            height: 250px;
+            position: relative;
+        }
+
+        img {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            z-index: 1;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <!-- <div><img src="../images/1.jpg" alt=""></div> -->
+
+    <script>
+        let block = prompt("Введите кол-во блоков:");
+
+        let count = 1;
+        let tab = "";
+            
+        for (i = 1; i <= block; i++) {
+            tab += "<div>";
+            tab += `<img src="../images/${i}.jpg" alt="">`;
+            tab += "</div>";
+        }
+
+        function colors() {
+            let index = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+
+            let colorName = "#";
+            for (i = 0; i < 6; i++) {
+            colorName += index[Math.floor(Math.random() * index.length)];
+            }
+            return colorName;
+        }
+
+        myDiv.innerHTML = tab;
+        document.body.myDiv.style.backgroundColor = colors();
+        
+    </script>
+</body>
+</html>

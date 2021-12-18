@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div id="cards">
+        <div class="card">
+            <div class="poster">
+                <img src="images/poster.jpg" alt="">
+                <img src="images/action.png" alt="">
+                <img src="images/blu-ray.png" alt="">
+            </div>
+            <div class="title">
+                Тайная жизнь<br> домашних животных 2
+            </div>
+            <div class="price">
+                <div>45,00 руб.</div>
+                <div>50,00 руб.</div>
+            </div>
+            <div class="rank">
+                <span class="material-icons">
+                    star star star star_half star_border
+                </span>
+            </div>
+            <div class="buy">
+                <img src="images/buy.jpg" alt="">
+            </div>
+        </div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+
+    <script>
+        let s = "";
+
+        let card = { 
+            title: "Тайная жизнь домашних животных 2",
+            price: 17,
+            currency: "руб.",
+            file: "card.jpg",
+            type: "blu-ray.jpg",
+            action: true,
+            rank: 4,
+            btn: "order.jpg"
+        };
+        
+        console.log(card);
+
+        // if (card.action == true) {
+        //     s = card.price + card.price * 0.9;
+        // }
+        // price.innerHTML = card.price;
+
+        // for (i = 0; i < cards.length; i++) {
+        //     let f = arrObj[i].f;
+        //     let w = arrObj[i].w;
+        //     let h = arrObj[i].h;
+
+        //     s += `<img src="images/${f}" width="${w}" height="${h}" alt="">`
+        // }
+
+        // myImg.innerHTML = s;
+
+    </script>
+
+</body>
+</html>

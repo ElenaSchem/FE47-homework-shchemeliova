@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <!-- <div class="block">
+            <img src="images/red.jpg" alt="">
+            <p>Красный костел</p>
+        </div>-->
+    </div>
+
+    <div id="info">
+        <!-- <div class="info_about">
+            <img src="images/red.jpg" alt="">
+            <p>В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы.</p>
+        </div> -->
+    </div>
+
+    <script>
+        let block = [
+            { 
+            image: "red.jpg",
+            title: "Красный костел",
+            text: "В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы.",
+            },
+
+            { 
+            image: "troi.jpg",
+            title: "Троицкое предместье",
+            text: "Троицкое предместье — исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь.",
+            },
+
+            { 
+            image: "mir.jpg",
+            title: "Мирский замок",
+            text: "Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Белоруссии.",
+            },
+        ];
+
+        let result = "";
+
+        for (i = 0; i < block.length; i++) {
+            result += `
+                <div class="block">
+                    <img onclick="about()" src="images/${block[i].image}" alt="">
+                    <p>${block[i].title}</p>
+                </div>
+            `;
+        }
+
+        main.innerHTML = result;
+
+        function about() {
+            let info_about = "";
+            for (i = 0; i < block.length; i++) {
+            info_about = `
+                <div class="info_about">
+                    <img onclick="info.style.visibility = 'hidden'" src="images/${block[i].image}" alt="">
+                    <p>${block[i].text}</p>
+                </div>
+            `;
+        }
+        info.innerHTML = info_about;
+        };
+            
+    </script>
+</body>
+</html>

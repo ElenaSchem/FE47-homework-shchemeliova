@@ -49,7 +49,7 @@
         for (i = 0; i < block.length; i++) {
             result += `
                 <div class="block">
-                    <img onclick="about()" src="images/${block[i].image}" alt="">
+                    <img onclick="about('${i}')" src="images/${block[i].image}" alt="">
                     <p>${block[i].title}</p>
                 </div>
             `;
@@ -57,17 +57,16 @@
 
         main.innerHTML = result;
 
-        function about() {
-            let info_about = "";
-            for (i = 0; i < block.length; i++) {
+        let info_about = "";
+
+        function about(i) {
             info_about = `
-                <div class="info_about">
-                    <img onclick="info.style.visibility = 'hidden'" src="images/${block[i].image}" alt="">
+                <div class="info_about" onclick="this.style.visibility = 'hidden'">
+                    <img src="images/${block[i].image}" alt="">
                     <p>${block[i].text}</p>
                 </div>
             `;
-        }
-        info.innerHTML = info_about;
+            info.innerHTML = info_about;
         };
             
     </script>

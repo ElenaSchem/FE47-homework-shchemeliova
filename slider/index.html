@@ -27,8 +27,7 @@
         #before, #next {
             /* border: 1px solid black; */
             width: 50px;
-            position: absolute;
-            top: 160px;
+            position: relative;
             cursor: pointer;
         }
 
@@ -43,14 +42,19 @@
             color: cyan;
         }
 
+        #before {
+            top: -230px;
+        }
+
         #next {
-            right: 20px;
+            top: -285px;
+            right: -506px;
         }
 
         article {
             height: 150px;
             background: rgba(34, 139, 34, 0.514);
-            transform: translateY(-174px);
+            transform: translateY(-280px);
             color: white;
         }
 

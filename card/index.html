@@ -13,63 +13,160 @@
 </head>
 <body>
     
-    <div id="cards">
-        <div class="card">
-            <div class="poster">
-                <img src="images/poster.jpg" alt="">
-                <img src="images/action.png" alt="">
-                <img src="images/blu-ray.png" alt="">
-            </div>
-            <div class="title">
-                Тайная жизнь<br> домашних животных 2
-            </div>
-            <div class="price">
-                <div>45,00 руб.</div>
-                <div>50,00 руб.</div>
-            </div>
-            <div class="rank">
-                <span class="material-icons">
-                    star star star star_half star_border
-                </span>
-            </div>
-            <div class="buy">
-                <img src="images/buy.jpg" alt="">
-            </div>
-        </div>
-        <div class="card"></div>
-        <div class="card"></div>
-    </div>
+    <div id="cards"></div>
 
     <script>
+        let card = [
+            { 
+            poster: "poster.jpg",
+            title: "Тайная жизнь<br> домашних животных 2",
+            player: "blu-ray.png",
+            action: "action.png",
+            sale: true,
+            salePerc: .9,  // порценты акции
+            price: 50,
+            currency: "руб.",
+            rank: 4.5,
+            order: "buy.jpg"
+            },
+
+            { 
+            poster: "toy4.jpg",
+            title: "История игрушек 4<br> Приключения Вилкинса",
+            player: "blu-ray.png",
+            action: "action.png",
+            sale: true,
+            salePerc: .9,  // порценты акции
+            price: 60,
+            currency: "руб.",
+            rank: 4,
+            order: "buy.jpg"
+            },
+
+            { 
+            poster: "ferd.jpg",
+            title: "Фердинанд<br> Побег из коровника",
+            player: "blu-ray.png",
+            action: "action.png",
+            sale: true,
+            salePerc: .9,  // порценты акции
+            price: 40,
+            currency: "руб.",
+            rank: 3.5,
+            order: "buy.jpg"
+            },
+
+        ]; 
+
+
         let s = "";
 
-        let card = { 
-            title: "Тайная жизнь домашних животных 2",
-            price: 17,
-            currency: "руб.",
-            file: "card.jpg",
-            type: "blu-ray.jpg",
-            action: true,
-            rank: 4,
-            btn: "order.jpg"
-        };
+        for (i = 0; i < card.length; i++) {
+
+            // Полная стоимость
+            let fullPrice = `${card[i].price},00 ${card[i].currency}`;
+            console.log(fullPrice);
+            
+            // Стоимость акции
+            let salePrice = `${Math.round(card[i].price * card[i].salePerc)},00 ${card[i].currency}`;
+            console.log(salePrice);
+
+            // Расчет рейтинга
+            let stars = "";
+
+            // for (i = 1; i <= card[i].rank; i++)
+            //     stars += "star ";
+            //     stars += "star_border";
+
+            switch (card[i].rank) {
+                case .5:
+                stars = "star_half star_border star_border star_border star_border";
+                break;
+
+                case 1:
+                stars = "star star_border star_border star_border star_border";
+                break;
+
+                case 1.5:
+                stars = "star star_half star_border star_border star_border";
+                break;
+
+                case 2:
+                stars = "star star star_border star_border star_border";
+                break;
+
+                case 2.5:
+                stars = "star star star_half star_border star_border";
+                break;
+
+                case 3:
+                stars = "star star star star_border star_border";
+                break;
+
+                case 3.5:
+                stars = "star star star star_half star_border";
+                break;
+
+                case 4:
+                stars = "star star star star star_border";
+                break;
+
+                case 4.5:
+                stars = "star star star star star_half";
+                break;
+
+                case 5:
+                stars = "star star star star star";
+                break;
+
+                default:
+                stars = "star_border star_border star_border star_border star_border";
+            }
+
+
+            // Выбор цены
+            let priceChange = "", vis = "";
+
+            if (card[i].sale) {
+                priceChange = `
+                    <div>${salePrice}</div>
+                    <div>${fullPrice}</div>
+                    `;
+                vis = `1`;
+            } else {
+                priceChange = `<div>${fullPrice}</div>`;
+                vis = `0`;
+            }
+
+
+
+            s += `
+                <div class="card">
+                <div class="poster">
+                    <img src="images/${card[i].poster}" alt="">
+                    <img style="opacity: ${vis}" src="images/${card[i].action}" alt="">
+                    <img src="images/${card[i].player}" alt="">
+                </div>
+                <div class="title">
+                    ${card[i].title}
+                </div>
+                <div class="price">
+                    ${priceChange}
+                </div>
+                <div class="rank">
+                    <span class="material-icons">
+                        ${stars}
+                    </span>
+                </div>
+                <div class="buy">
+                    <img src="images/${card[i].order}" alt="">
+                </div>
+            </div>
+            `;
         
-        console.log(card);
+        }
 
-        // if (card.action == true) {
-        //     s = card.price + card.price * 0.9;
-        // }
-        // price.innerHTML = card.price;
-
-        // for (i = 0; i < cards.length; i++) {
-        //     let f = arrObj[i].f;
-        //     let w = arrObj[i].w;
-        //     let h = arrObj[i].h;
-
-        //     s += `<img src="images/${f}" width="${w}" height="${h}" alt="">`
-        // }
-
-        // myImg.innerHTML = s;
+        cards.innerHTML = s;
 
     </script>
 

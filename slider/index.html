@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+
+    <style>
+        section {
+            width: 550px;
+            height: 400px;
+            margin: auto;
+        }
+
+        #pic:hover {
+            filter: brightness(60%);
+        }
+
+        #pic {
+            transition: .3s;
+        }
+
+        #before, #next {
+            /* border: 1px solid black; */
+            width: 50px;
+            position: absolute;
+            top: 160px;
+            cursor: pointer;
+        }
+
+        .material-icons {
+            font-size: 50px;
+            color: white;
+            text-shadow: 2px 2px 3px black;
+            transition: .5s;
+        }
+
+        .material-icons:hover {
+            color: cyan;
+        }
+
+        #next {
+            right: 20px;
+        }
+
+        article {
+            height: 150px;
+            background: rgba(34, 139, 34, 0.514);
+            transform: translateY(-174px);
+            color: white;
+        }
+
+        h1, p {
+            padding-left: 15px;
+        }
+
+        h1 {
+            padding-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            transition: .5s;  
+        }
+
+        a:hover {
+            color: aquamarine  
+        }
+
+        h2 {
+            transform: translate(15px, -230px);
+            border: 1px solid white;
+            width: fit-content;
+            text-align: center;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body onload="time = setTimeout(timer, 2000)">
+
+    <section onmouseover="pause()" onmouseout="time = setTimeout(timer, 2000)">
+        <a id="a1" href="https://www.google.com"><img id="pic" src="images/img1b.jpg" alt=""></a>
+        
+        <div id="before" onclick="before()"><span class="material-icons"> navigate_before </span></div>
+        <div id="next" onclick="next()"><span class="material-icons"> navigate_next </span></div>
+
+        <article>
+            <h2 id="t1"><a href="https://www.google.com">www.google.com</a></h2>
+            <h1 id="t2">Header 1</h1>
+            <p id="t3">Subheader Subheader Subheader Subheader Subheader 1</p>
+        </article>
+    </section>
+
+    <script>
+        let id = 1;
+        const n = 6;
+
+        let link = [
+            "https://www.google.com",
+            "https://yandex.by",
+            "http://www.facebook.com", 
+            "https://twitter.com",
+            "https://www.instagram.com", 
+            "https://www.linkedin.com"
+        ];
+
+        let linkTo = [];
+
+        for (i = 0; i < link.length; i++) {
+            let len = link[i].length;
+            // console.log(len);
+
+            let cut = link[i].indexOf("://");
+            // console.log(cut);
+
+            let domain = link[i].substr(cut + 3, len);
+            // console.log(domain);
+
+            linkTo[i] = domain;
+        }
+
+        function timer() {
+            if (++id > n) id = 1;
+
+            changeElem();
+
+            // console.log(time);
+            time = setTimeout(timer, 2000);
+        }
+
+        function changeElem() {
+            pic.src = `images/img${id}b.jpg`;
+            a1.href= link[id-1];
+            t1.innerHTML = `<a href="${link[id-1]}">${linkTo[id-1]}</a>`;
+            t2.innerHTML = `Header ${id}`;
+            t3.innerHTML = `<a href="link${id}.html">Subheader Subheader Subheader Subheader Subheader Subheader Subheader Subheader Subheader Subheader Subheader Subheader Subheader Subheader ${id}</a>`;
+        }
+
+        function pause() {
+            clearTimeout(time);
+        }
+
+        function next(){
+            if (id >= n) id = 1;
+               else id++;
+            changeElem();
+        }
+
+        function before(){
+            if (id > 1) id--;
+               else id = n;
+            changeElem();
+        }
+
+    </script>
+</body>
+</html>

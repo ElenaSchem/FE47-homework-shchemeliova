@@ -74,22 +74,8 @@ body {
     transition: .3s;
 }
 
-.nav-link::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    /* z-index: 1; */
-    width: 100%;
-    height: 1px;
-    opacity: 0;
-    background-color: #BDAE82;
-    transition: opacity .1s linear;
-}
-
-.nav-link:hover::after, .nav-link:hover {
+.nav-link:hover {
     color: #BDAE82;
-    opacity: 1;
 }
 
 .lng-en, .lng-ru {

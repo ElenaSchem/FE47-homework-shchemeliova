@@ -406,6 +406,10 @@ main {
     color: #BDAE82;
 }
 
+.send-input::placeholder, .send-textarea::placeholder {
+    color: #BDAE82;
+}
+
 .send-textarea {
     resize: none;
     width: 100%;
@@ -445,12 +449,15 @@ main {
 .social-list {
     width: 188px;
     height: 50px;
+    padding-left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    list-style: none;
 }
 
-.social-icon {
+.icon {
+    display: block;
     width: 32px;
     height: 32px;
     background-size: contain;
@@ -478,13 +485,3 @@ main {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
-
-/* .icon {
-    width: 32px;
-    height: 32px;
-    fill: #fff;
-}
-
-.icon:hover {
-    fill: #BDAE82;
-} */
